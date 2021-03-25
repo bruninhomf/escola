@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $fillable = [
-        'name'
+        'name',
     ];
+
+    public function course()
+    {
+        return $this->hasMany(Course::class, 'course_id');
+    }
 }
