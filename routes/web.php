@@ -37,8 +37,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/curso/editar/{course}', [CourseController::class, 'edit']);
     Route::post('/curso/{course}', [CourseController::class, 'update']);
     Route::get('/curso/apagar/{course}', [CourseController::class, 'destroy']);
+    Route::get('/import/novo', [CourseController::class, 'importView']);
+    Route::post('/import', [CourseController::class, 'import']);
 
 
+    Route::any('/alunos/search', [StudentController::class, 'search']);
     Route::get('/alunos', [StudentController::class, 'index']);
     Route::get('/aluno/novo', [StudentController::class, 'create']);
     Route::post('/aluno', [StudentController::class, 'store']);
