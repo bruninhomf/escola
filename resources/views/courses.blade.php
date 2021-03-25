@@ -17,11 +17,11 @@
             </ol>
           </div>
           <div class="pt-3 ml-auto">
-            <a class="btn btn-primary btn-sm" href="import">
+            <a class="btn btn-primary btn-sm" href="/import/novo">
               <i class="fas fa-upload pr-1"></i>
               Importar
             </a>
-            <a class="btn btn-success btn-sm" href="curso/novo">
+            <a class="btn btn-success btn-sm" href="/curso/novo">
                 <i class="fas fa-plus pr-1"></i>
                 Adicionar
             </a>
@@ -35,7 +35,7 @@
 
       <!-- Default box -->
       <div class="card">
-        <div class="card-header">
+        {{--  <div class="card-header">
           <h3 class="card-title">Lista de Cursos</h3>
 
           <div class="card-tools">
@@ -46,56 +46,52 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-        </div>
+        </div>  --}}
         <div class="card-body p-0">
           <table class="table table-striped projects">
-              <thead>
-                  <tr>
-                      <th style="width: 5%">
-                          Id
-                      </th>
-                      <th style="width: 75%">
-                          Nome do Curso
-                      </th>
-                      <th class="text-center">
-                          Ações
-                      </th>
-                  </tr>
-              </thead>
-              <tbody>
-                @foreach($courses as $key => $course)
-                  <tr>
-                      <td>
-                          {{ $course->id }}
-                      </td>
-                      <td>
-                        {{ $course->name }}
-                      </td>
-                      <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="/curso/visualizar/{{ $course->id }}">
-                              <i class="fas fa-eye">
-                              </i>
-                          </a>
-                          <a class="btn btn-info btn-sm" href="/curso/editar/{{ $course->id }}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="/curso/apagar/{{ $course->id }}">
-                              <i class="fas fa-trash">
-                              </i>
-                          </a>
-                      </td>
-                  </tr>
-                  @endforeach
-              </tbody>
+            <thead>
+              <tr>
+                <th style="width: 5%">
+                    Id
+                </th>
+                <th style="width: 75%">
+                    Nome do Curso
+                </th>
+                <th class="text-center">
+                    Ações
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($courses as $key => $course)
+                <tr>
+                  <td>
+                      {{ $course->id }}
+                  </td>
+                  <td>
+                    {{ $course->name }}
+                  </td>
+                  <td class="project-actions text-right">
+                    <a class="btn btn-primary btn-sm" href="/curso/visualizar/{{ $course->id }}">
+                        <i class="fas fa-eye">
+                        </i>
+                    </a>
+                    <a class="btn btn-info btn-sm" href="/curso/editar/{{ $course->id }}">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="/curso/apagar/{{ $course->id }}">
+                        <i class="fas fa-trash">
+                        </i>
+                    </a>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
           </table>
           {{ $courses->links() }}
         </div>
       </div>
-      <script>
-        console.log('ola')
-        $(".card").remove();
-      </script>
 
     </section>
   </div>
