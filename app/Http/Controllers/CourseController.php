@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CourseRequest;
+use App\Http\Requests\ImportRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use App\Imports\CoursesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CourseController extends Controller
 {
@@ -15,7 +19,7 @@ class CourseController extends Controller
     public function index()
     {
         return view('courses', [
-            'courses' => Course::paginate(2)
+            'courses' => Course::paginate(5)
         ]);
     }
 
@@ -37,7 +41,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
         Course::create($request->all());
         return redirect('cursos');
@@ -98,5 +102,37 @@ class CourseController extends Controller
             $course->delete();
         }
         return redirect('cursos');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Course  $course
+     * @return \Illuminate\Http\Response
+     */
+    public function importView(Course $course)
+    {
+        return view('courses-import');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Course  $course
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function import(ImportRequest $require)
+    {
+        $require->validate([
+            'file' => 'required',
+        ]);
+        
+        // $XML = \Maatwebsite\Excel\Excel::XML;
+
+        if($require->hasFile('file')){
+            Excel::import(new coursesImport, $require->file, \Maatwebsite\Excel\Excel::XML);
+            return redirect('/import/novo');
+        }
     }
 }
