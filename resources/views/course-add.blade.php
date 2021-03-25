@@ -39,6 +39,9 @@
                 <label for="name">Nome do curso</label>
                 <input id="name" name="name" type="text" class="form-control">
               </div>
+              @error('name')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
               <div class="pt-3 text-right">
                 <button type="submit" class="btn btn-success btn-sm">
                   <i class="fas fa-save pr-1"></i>

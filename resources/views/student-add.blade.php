@@ -39,7 +39,7 @@
           <li class="nav-item">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informações</a>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Endereço</a>
           </li>
@@ -48,7 +48,6 @@
           <form action="/aluno" method="post" enctype="multipart/form-data">
             @csrf
 
-
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="col-12 pt-4">
@@ -56,6 +55,9 @@
                     <label for="name">Nome Completo</label>
                     <input id="name" name="name" type="text" class="form-control">
                   </div>
+                  @error('name')
+                    <small class="text-danger">{{ $message }}</small>
+                  @enderror
                 </div>
                 <div class="row px-2">
                   <div class="col-6">
@@ -67,12 +69,18 @@
                           @endforeach
                         </select>
                     </div>
+                    @error('course_id')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-6">
                     <div class="form-group">
                       <label for="class">Turma</label>
                       <input id="class" name="class" type="text" class="form-control">
                     </div>
+                    @error('class')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-6">
                     <div class="form-group">
@@ -82,16 +90,22 @@
                         <option value="0">Desativar</option>
                       </select>
                     </div>
+                    @error('status')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-6">
                     <div class="custom-file">
                       <label for="exampleFormControlFile1">Example file input</label>
                       <input id="image" name="image" type="file" class="form-control-file border" id="exampleFormControlFile1">
+                      @error('image')
+                        <small class="text-danger">{{ $message }}</small>
+                      @enderror
                     </div>
                   </div>
                 </div>
               </div>
-                
+
               <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="row">
                   <div class="col-2 pt-4">
@@ -99,42 +113,59 @@
                       <label for="zip_code">CEP</label>
                       <input id="zip_code" name="zip_code" type="text" class="form-control">
                     </div>
+                    @error('zip_code')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-10 pt-4">
                     <div class="form-group">
                       <label for="street">Rua</label>
                       <input id="street" name="street" type="text" class="form-control">
                     </div>
+                    @error('street')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-2">
                     <div class="form-group">
                       <label for="number">Número</label>
                       <input id="number" name="number" type="text" class="form-control">
                     </div>
+                    @error('number')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label for="district">Bairro</label>
                       <input id="district" name="district" type="text" class="form-control">
                     </div>
+                    @error('district')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label for="city">Cidade</label>
                       <input id="city" name="city" type="text" class="form-control">
                     </div>
+                    @error('city')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                   <div class="col-2">
                     <div class="form-group">
                       <label for="state">Estado</label>
                       <input id="state" name="state" type="text" class="form-control">
                     </div>
+                    @error('state')
+                      <small class="text-danger">{{ $message }}</small>
+                    @enderror
                   </div>
                 </div>
-                
+
               </div>
             </div>
-            
 
             <div class="col-12 py-4">
               <div class="pt-3 text-right">
