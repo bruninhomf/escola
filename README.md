@@ -7,7 +7,9 @@ Escola é um sistema que foi desenvolvido com finalizações acadêmicas, para d
 
 ### Módulos do sistema
 
+- **[Cadastro de usuários](https://#)**
 - **[Cadastro de cursos](https://#)**
 - **[Cadastros de alunos](https://#)**
 - **[Importação de cursos](https://#)**
 
+O sistema possui controle de usuário por senha, cadastro de aluno com foto, busca por matricula, paginação, cadastro de cursos e importação de cursos via xml ou xlsx.
