@@ -49,10 +49,7 @@
                   <table>
                     <tbody>
                       <tr>
-                        <td>
-                          Foto: 
-                        </td>
-                        <td>
+                        <td colspan="2" class="pb-3">
                           <img src="/img/students/{{ $student->image }}" width="200">
                         </td>
                       </tr>
