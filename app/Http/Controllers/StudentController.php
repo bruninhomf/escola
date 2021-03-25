@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentRequest;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -18,6 +19,21 @@ class StudentController extends Controller
         return view('students', [
             'students' => Student::paginate(5)
         ]);
+        
+        // $search = request('search');
+
+        // if ($search) {
+        //     $students = Student::where([
+        //         ['id', 'name', '%'.$search.'%']
+        //     ])->get();
+        //     // dd($search);
+        // } else {
+        //     $students = Student::paginate(5);
+        // }
+        // return view('students', [
+        //     'students' => $students,
+        //     'search'   => $search
+        // ]);
     }
 
     /**
@@ -39,7 +55,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
         $student = new Student;
 
@@ -149,5 +165,21 @@ class StudentController extends Controller
             $student->delete();
         }
         return redirect('alunos');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Student  $student
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = $request->filter;
+        $resultado = Student::where('id', 'LIKE', "%{$search}%")->paginate(5);
+        
+        return view('students', [
+            'students' => $resultado
+        ]);
     }
 }
